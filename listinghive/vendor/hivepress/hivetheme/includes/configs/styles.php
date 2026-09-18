@@ -12,11 +12,13 @@ return [
 	'minireset'         => [
 		'handle' => 'minireset',
 		'src'    => hivetheme()->get_url() . '/assets/css/minireset.min.css',
+		'rtl'    => true,
 	],
 
 	'flexboxgrid'       => [
 		'handle' => 'flexboxgrid',
 		'src'    => hivetheme()->get_url() . '/assets/css/flexboxgrid.min.css',
+		'rtl'    => true,
 	],
 
 	'fontawesome'       => [
@@ -33,5 +35,6 @@ return [
 		'handle' => 'hivetheme-core-frontend',
 		'src'    => hivetheme()->get_url() . '/assets/css/frontend.min.css',
 		'scope'  => [ 'frontend', 'editor' ],
+		'rtl'    => true,
 	],
 ];

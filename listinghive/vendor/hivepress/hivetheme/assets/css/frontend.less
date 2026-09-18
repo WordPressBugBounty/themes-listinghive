@@ -1,6 +1,6 @@
-/*--------------------------------------------------------------
-Variables
---------------------------------------------------------------*/
+//--------------------------------------------------------------
+// Variables
+//--------------------------------------------------------------
 @heading-font-color: rgba(15, 23, 39, .85);
 @heading-font-color-hover: rgb(15, 23, 39, 1);
 @body-font-color: rgba(15, 23, 39, .65);
@@ -17,23 +17,23 @@ Variables
 @box-shadow: 0 2px 4px 0 rgba(7, 36, 86, .075);
 @animation-duration: 0.25s;
 
-/*--------------------------------------------------------------
-Mixins
---------------------------------------------------------------*/
-.hp-image-container {
+//--------------------------------------------------------------
+// Mixins
+//--------------------------------------------------------------
+.hp-image-container() {
 	img {
 		display: block;
 		width: 100%;
 	}
 }
 
-.hp-center-container {
+.hp-center-container() {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.hp-clear-container {
+.hp-clear-container() {
 	&::after {
 		display: table;
 		clear: both;
@@ -41,7 +41,7 @@ Mixins
 	}
 }
 
-.hp-container-overlay {
+.hp-container-overlay() {
 	content: '';
 	display: block;
 	position: absolute;
@@ -51,7 +51,7 @@ Mixins
 	bottom: 0;
 }
 
-.hp-unstyled-list {
+.hp-unstyled-list() {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -61,7 +61,7 @@ Mixins
 	}
 }
 
-.hp-font-icon {
+.hp-font-icon() {
 	font-family: 'Font Awesome 5 Free';
 	font-weight: 900;
 	font-style: normal;
@@ -73,7 +73,7 @@ Mixins
 	text-rendering: auto;
 }
 
-.hp-range-slider {
+.hp-range-slider() {
 	.ui {
 		&-slider-horizontal {
 			height: 5px;
@@ -980,6 +980,7 @@ Header
 						content: '\f105';
 						color: @icon-color;
 						font-size: 16px;
+						transform: scaleX(1) /*rtl:scaleX(-1)*/;
 					}
 				}
 
@@ -1135,10 +1136,11 @@ Header
 						right: 0;
 						top: 0.2rem;
 						transition: transform @animation-duration;
+						transform: scaleX(1) /*rtl:scaleX(-1)*/;
 					}
 
 					&.active::after {
-						transform: rotate(90deg);
+						transform: rotate(90deg) /*rtl:rotate(90deg)*/;
 					}
 				}
 
@@ -1687,6 +1689,7 @@ Widgets
 			font-size: 14px;
 			content: '\f054';
 			top: 0.3rem;
+			transform: scaleX(1) /*rtl:scaleX(-1)*/;
 		}
 	}
 }
@@ -2192,12 +2195,13 @@ Posts
 				&:last-child {
 					margin-left: 0.4rem;
 					transition: transform @animation-duration;
+					transform: scaleX(1) /*rtl:scaleX(-1)*/;
 				}
 			}
 
 			&:hover i {
 				&:last-child {
-					transform: translateX(5px);
+					transform: translateX(5px) scaleX(1) /*rtl:translateX(-5px) scaleX(-1)*/;
 				}
 			}
 		}
@@ -2242,10 +2246,12 @@ Posts
 
 			&:first-child {
 				margin-right: 0.5rem;
+				transform: scaleX(1) /*rtl:scaleX(-1)*/;
 			}
 
 			&:last-child {
 				margin-left: 0.5rem;
+				transform: scaleX(1) /*rtl:scaleX(-1)*/;
 			}
 		}
 
@@ -2254,11 +2260,11 @@ Posts
 				color: @primary-font-color;
 
 				&:first-child {
-					transform: translateX(-5px; );
+					transform: translateX(-5px) scaleX(1) /*rtl:translateX(5px) scaleX(-1)*/;
 				}
 
 				&:last-child {
-					transform: translateX(5px; );
+					transform: translateX(5px) scaleX(1) /*rtl:translateX(-5px) scaleX(-1)*/;
 				}
 			}
 		}
@@ -2396,6 +2402,7 @@ Comments
 			i {
 				font-size: 12px;
 				margin-right: 0.4rem;
+				transform: scaleX(1) /*rtl:scaleX(-1)*/;
 			}
 		}
 	}
@@ -2566,6 +2573,7 @@ Pagination
 			&::before {
 				.hp-font-icon;
 				font-size: 16px;
+				transform: scaleX(1) /*rtl:scaleX(-1)*/;
 			}
 
 			i {
@@ -2628,6 +2636,12 @@ HivePress
 
 	&-meta {
 		color: @secondary-font-color;
+	}
+
+	&-text {
+		&--secondary {
+			color: @secondary-font-color;
+		}
 	}
 
 	&-table {
@@ -2973,10 +2987,6 @@ HivePress
 
 		&--view-block &__created-date,
 		&--view-page &__created-date {
-			color: @secondary-font-color;
-		}
-
-		&--edit-block &__created-date {
 			color: @secondary-font-color;
 		}
 
